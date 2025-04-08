@@ -62,7 +62,7 @@
       const dataListDiv = document.getElementById("dataList");
       dataListDiv.innerHTML = "<p>Loading...</p>";
 
-      fetch("http://localhost:3002/iphonesData")
+      fetch("bds6wa3rbautob85uxah-mysql.services.clever-cloud.com/iphonesData")
         .then(response => {
           if (!response.ok) {
             throw new Error("Failed to load product data.");

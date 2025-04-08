@@ -3,6 +3,7 @@
 import cors from "cors";
 import express from "express";
 import mysql from "mysql";
+const port = 3306;
 
 const app = express();
 // extract from html body name attribute
@@ -11,16 +12,16 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.json())
 
 app.use(cors());
-app.listen(3002, (err) => {
+app.listen(port, (err) => {
   if (err) throw err;
-  console.log("new Server is running on port 3002 http://localhost:3002");
+  console.log("new Server is running on port 3002 clever-cloud.com");
 });
 
 const mysqlConnection = mysql.createConnection({
-  host: "localhost",
-  user: "myDBuser2",
-  password: "myDBuser",
-  database: "AppleDB",
+  host: "bds6wa3rbautob85uxah-mysql.services.clever-cloud.com",
+  user: "ufgrpo3ohnlaux6u",
+  password: "2bYrrxXuq9FCIOQiEvGR",
+  database: "bds6wa3rbautob85uxah",
 });
 
 mysqlConnection.connect((err) => {
