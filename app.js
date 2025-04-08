@@ -18,10 +18,10 @@ app.listen(port, (err) => {
 });
 
 const mysqlConnection = mysql.createConnection({
-  host: "bds6wa3rbautob85uxah-mysql.services.clever-cloud.com",
-  user: "ufgrpo3ohnlaux6u",
-  password: "2bYrrxXuq9FCIOQiEvGR",
-  database: "bds6wa3rbautob85uxah",
+  host: "bmcpk9odnswsggsvrdo6-mysql.services.clever-cloud.com",
+  user: "ui0inoaznrreksow",
+  password: "wWtJr6GPMErx1fLywFgu",
+  database: "bmcpk9odnswsggsvrdo6",
 });
 
 mysqlConnection.connect((err) => {

@@ -1,108 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Product Data</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 0;
-      background-color: #f9f9f9;
-    }
-    button {
-      padding: 10px;
-      margin: 10px 0;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .data-list {
-      margin-top: 20px;
-    }
-    .data-item {
-      background-color: #fff;
-      padding: 15px;
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    .data-item h3 {
-      margin: 0;
-      font-size: 1.5em;
-    }
-    .data-item p {
-      margin: 5px 0;
-    }
-    .data-item img {
-      max-width: 150px;
-      border-radius: 5px;
-      display: block;
-      margin-top: 10px;
-    }
-    .error {
-      color: red;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <h1>All Product Data</h1>
-  <button id="loadAllDataBtn">Load All Product Data</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Product Data</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+      button {
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .data-list {
+        margin-top: 20px;
+      }
+      .data-item {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .data-item h3 {
+        margin: 0;
+        font-size: 1.5em;
+      }
+      .data-item p {
+        margin: 5px 0;
+      }
+      .data-item img {
+        max-width: 150px;
+        border-radius: 5px;
+        display: block;
+        margin-top: 10px;
+      }
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>All Product Data</h1>
+    <button id="loadAllDataBtn">Load All Product Data</button>
 
-  <div id="dataList" class="data-list"></div>
+    <div id="dataList" class="data-list"></div>
 
-  <script>
-    document.getElementById("loadAllDataBtn").addEventListener("click", function() {
-      const dataListDiv = document.getElementById("dataList");
-      dataListDiv.innerHTML = "<p>Loading...</p>";
+    <script>
+      document
+        .getElementById("loadAllDataBtn")
+        .addEventListener("click", function () {
+          const dataListDiv = document.getElementById("dataList");
+          dataListDiv.innerHTML = "<p>Loading...</p>";
 
-      fetch("bds6wa3rbautob85uxah-mysql.services.clever-cloud.com/iphonesData")
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Failed to load product data.");
-          }
-          return response.json();
-        })
-        .then(data => {
-          dataListDiv.innerHTML = ""; // Clear previous content
+          fetch("https://applebackend-ndus.onrender.com/iphonesData")
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Failed to load product data.");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              dataListDiv.innerHTML = ""; // Clear previous content
 
-          if (!data || data.length === 0) {
-            dataListDiv.innerHTML = "<p>No data found.</p>";
-            return;
-          }
+              if (!data || data.length === 0) {
+                dataListDiv.innerHTML = "<p>No data found.</p>";
+                return;
+              }
 
-          data.forEach(item => {
-            const itemDiv = document.createElement("div");
-            itemDiv.classList.add("data-item");
+              data.forEach((item) => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("data-item");
 
-            itemDiv.innerHTML = `
+                itemDiv.innerHTML = `
               <h3>${item.product_name || "N/A"}</h3>
               <p><strong>Product ID:</strong> ${item.product_id || "N/A"}</p>
-              <p><strong>Product URL:</strong> <a href="${item.product_url}" target="_blank">${item.product_url || "N/A"}</a></p>
-              <p><strong>Brief Description:</strong> ${item.product_brief_description || "N/A"}</p>
-              <p><strong>Full Description:</strong> ${item.product_description || "N/A"}</p>
-              <p><strong>Product Image:</strong> ${item.product_img ? `<img src="${item.product_img}" alt="Product Image">` : "N/A"}</p>
-              <p><strong>Product Link:</strong> <a href="${item.product_link}" target="_blank">${item.product_link || "N/A"}</a></p>
-              <p><strong>Starting Price:</strong> ${item.starting_price ? `$${item.starting_price}` : "N/A"}</p>
+              <p><strong>Product URL:</strong> <a href="${
+                item.product_url
+              }" target="_blank">${item.product_url || "N/A"}</a></p>
+              <p><strong>Brief Description:</strong> ${
+                item.product_brief_description || "N/A"
+              }</p>
+              <p><strong>Full Description:</strong> ${
+                item.product_description || "N/A"
+              }</p>
+              <p><strong>Product Image:</strong> ${
+                item.product_img
+                  ? `<img src="${item.product_img}" alt="Product Image">`
+                  : "N/A"
+              }</p>
+              <p><strong>Product Link:</strong> <a href="${
+                item.product_link
+              }" target="_blank">${item.product_link || "N/A"}</a></p>
+              <p><strong>Starting Price:</strong> ${
+                item.starting_price ? `$${item.starting_price}` : "N/A"
+              }</p>
               <p><strong>Price Range:</strong> ${item.price_range || "N/A"}</p>
               <p><strong>Order ID:</strong> ${item.order_id || "N/A"}</p>
               <p><strong>User Name:</strong> ${item.User_name || "N/A"}</p>
             `;
 
-            dataListDiv.appendChild(itemDiv);
-          });
-        })
-        .catch(error => {
-          console.error("Error fetching data:", error);
-          dataListDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+                dataListDiv.appendChild(itemDiv);
+              });
+            })
+            .catch((error) => {
+              console.error("Error fetching data:", error);
+              dataListDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+            });
         });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
