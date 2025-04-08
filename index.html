@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>database - form</title>
+  </head>
+  <body>
+    <form action="http://localhost:3002/add-product" method="post">
+      <div>
+        <h2>Product Table</h2>
+        <label for="product_name">Product Name:</label><br />
+        <input type="text" name="product_name" required /><br /><br />
+
+        <label for="product_url">Product URL:</label><br />
+        <input type="url" name="product_url" /><br /><br />
+      </div>
+
+      <div>
+        <h2>Product Description</h2>
+        <label for="product_brief_description">Brief Description:</label><br />
+        <textarea name="product_brief_description" rows="5" cols="30"></textarea
+        ><br /><br />
+
+        <label for="product_description">Full Description:</label><br />
+        <textarea name="product_description" rows="10" cols="30"></textarea
+        ><br /><br />
+
+        <label for="product_img">Product Image URL:</label><br />
+        <input type="url" name="product_img" /><br /><br />
+
+        <label for="product_link">Product Link:</label><br />
+        <input type="url" name="product_link" /><br /><br />
+      </div>
+
+      <div>
+        <h2>Product Price</h2>
+        <label for="starting_price">Starting Price:</label><br />
+        <input type="text" name="starting_price" /><br /><br />
+
+        <label for="price_range">Price Range:</label><br />
+        <input type="text" name="price_range" /><br /><br />
+      </div>
+
+      <div>
+        <h2>User Information (Optional)</h2>
+        <!-- <label for="user_id">User ID:</label><br />
+        <input type="number" name="user_id" /><br /><br /> -->
+
+        <label for="user_name">User Name:</label><br />
+        <input type="text" name="user_name" /><br /><br />
+
+        <label for="user_password">User Password:</label><br />
+        <input type="password" name="user_password" /><br /><br />
+      </div>
+
+      <br />
+      <input type="submit" value="Add Product" />
+    </form>
+  </body>
+</html>
